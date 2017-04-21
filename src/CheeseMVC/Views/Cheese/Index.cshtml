@@ -3,3 +3,17 @@
 }
 
 <h1>My Cheeses</h1>
+
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+
+@if (ViewBag.Cheeses.Count == 0)
+{
+    <p>No cheeses yet!</p>
+}
+
+<ul>
+    @foreach (string cheese in ViewBag.cheeses)
+    {
+        <li>@cheese</li>
+    }
+</ul>

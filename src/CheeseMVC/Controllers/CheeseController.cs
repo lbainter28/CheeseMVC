@@ -10,15 +10,30 @@ namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
+
+        static private List<string> Cheeses = new List<string>();
+
         // GET: /<controller>/
         public IActionResult Index()
+        {
+
+            ViewBag.cheeses = Cheeses;
+
+            return View();
+        }
+
+        public IActionResult Add()
         {
             return View();
         }
 
-        public IActionResult Index2()
+        [HttpPost]
+        [Route("/Cheese/Add")]
+        public IActionResult NewCheese(string name)
         {
-            return View("Index");
+            //Add the new cheese to my existing cheeses
+            Cheeses.Add(name);
+            return Redirect("/Cheese");
         }
     }
 }
