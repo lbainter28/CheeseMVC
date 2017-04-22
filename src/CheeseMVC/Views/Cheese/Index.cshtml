@@ -4,6 +4,7 @@
 <h1>My Cheeses</h1>
 
 <p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+<p><a asp-controller="Cheese" asp-action="Remove">Remove Cheeses</a></p>
 
 @if (ViewBag.Cheeses.Count == 0)
 {
@@ -13,6 +14,10 @@
 <ul>
     @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
     {
-        <li><strong>@cheese.Key:</strong> @cheese.Value</li>
+        <li><strong>@cheese.Key: </strong><em>@cheese.Value</em>
+        (<a asp-controller="Cheese"
+            asp-action="RemoveSingleCheese"
+            asp-route-cheeseName="@cheese.Key">delete</a>)
+        </li>
     }
 </ul>

@@ -2,9 +2,17 @@
 }
 
 <h1>Add Cheese</h1>
+<br />
+
+@if (ViewBag.error.Length > 0)
+{
+    <p style="color: red;">@ViewBag.error</p>
+}
 
 <form method="post">
+    <label>Name:</label>
     <input type="text" name="name" />
+    <label>Description:</label>
     <input type="text" name="description" />
     <input type="submit" value="Add Cheese" />
 </form>
