@@ -10,15 +10,31 @@ namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
+
+        static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
+
         // GET: /<controller>/
         public IActionResult Index()
+        {
+
+            ViewBag.cheeses = Cheeses;
+
+            return View();
+        }
+
+        public IActionResult Add()
         {
             return View();
         }
 
-        public IActionResult Index2()
+        [HttpPost]
+        [Route("/Cheese/Add")]
+        public IActionResult NewCheese(string name, string description)
         {
-            return View("Index");
+            //Add the new cheese to my existing cheeses
+            Cheeses.Add(name, description);
+            return Redirect("/Cheese");
         }
     }
 }
+
