@@ -1,4 +1,5 @@
-﻿@{
+﻿@using CheeseMVC.Models
+@{
 }
 
 <h1>My Cheeses</h1>
@@ -12,12 +13,12 @@
 }
 
 <ul>
-    @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+    @foreach (Cheese cheese in ViewBag.cheeses)
     {
-        <li><strong>@cheese.Key: </strong><em>@cheese.Value</em>
+        <li><strong>@cheese.Name: </strong><em>@cheese.Description</em>
         (<a asp-controller="Cheese"
             asp-action="RemoveSingleCheese"
-            asp-route-cheeseName="@cheese.Key">delete</a>)
+            asp-route-cheeseName="@cheese.Name">delete</a>)
         </li>
     }
 </ul>
